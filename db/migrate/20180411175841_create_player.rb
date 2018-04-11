@@ -3,7 +3,6 @@ class CreatePlayer < ActiveRecord::Migration[5.2]
   	create_table :players do |t|
   		t.string :playername
   		t.string :position
-  		t.integer :height
   		t.integer :fg_perc
   		t.integer :three_pt_perc
   		t.integer :free_throw_perc

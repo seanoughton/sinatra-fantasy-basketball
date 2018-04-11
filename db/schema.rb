@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2018_04_11_175841) do
   create_table "players", force: :cascade do |t|
     t.string "playername"
     t.string "position"
-    t.integer "height"
     t.integer "fg_perc"
     t.integer "three_pt_perc"
     t.integer "free_throw_perc"
