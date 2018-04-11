@@ -2,11 +2,18 @@
 <h1> <%=@user.username%> Create a Team</h1>
 <form action="/team/new" method="POST">
 
-  <lable>Team Name</label> <input type="text" id="content" name="team[name]"><br></br>
+  <lable>Team Name</label> <input type="text" id="content" name="team[teamname]"><br></br>
 
-  <%binding.pry%>
+  <h3>Choose Players</h3>
+  <%Player.all.each do |player|%>
+     <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><%=player.playername%></input>
+   <br></br>
+ <%end%>
+
 
     <input type="submit" id="submit" value="Create Team">
 </form>
+
+<br></br>
 
 <h3><a href="/logout">Log Out</a>

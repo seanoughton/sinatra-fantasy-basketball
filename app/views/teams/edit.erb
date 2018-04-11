@@ -1,0 +1,30 @@
+<h1> Edit your Team </h1>
+
+<form action="/team/<%=@team.id%>/edit" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+
+  <h3>Edit Team Name</h3>
+  <input type="text" name="team[teamname]" id="team_name" value="<%= @team.teamname%>">
+  <br></br>
+
+  <h3>Remove Players</h3>
+
+  <% @team.players.all.each do |player| %>
+    <label><%= player.playername %></label>
+    <input type="checkbox" id="remove_<%=player.id%>" name="remove_player[player_ids][]" value="<%= player.id %>"><br>
+  <% end %>
+
+  <br></br>
+
+  <h3>Add Players</h3>
+
+  <% Player.all.each do |player| %>
+    <label><%= player.playername %></label>
+    <input type="checkbox" id="add_<%=player.id%>" name="add_player[player_ids][]" value="<%= player.id %>"><br>
+  <% end %>
+
+  <br></br>
+
+  <input type="submit" value="Edit Team">
+
+</form>
