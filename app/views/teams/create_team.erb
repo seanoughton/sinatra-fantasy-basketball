@@ -1,0 +1,12 @@
+
+<h1> <%=@user.username%> Create a Team</h1>
+<form action="/team/new" method="POST">
+
+  <lable>Team Name</label> <input type="text" id="content" name="team[name]"><br></br>
+
+  <%binding.pry%>
+
+    <input type="submit" id="submit" value="Create Team">
+</form>
+
+<h3><a href="/logout">Log Out</a>

@@ -1,1 +1,18 @@
 <h1>Here is a list of all of the teams</h1>
+
+<ul>
+<%@teams.each do |team|%>
+	<li><strong>Team Name:</strong> <%=team.teamname%></li>
+	<h3>Players</h3>
+		<ul>
+		<%team.players.each do |player|%>
+			<li><strong><a href="/player/<%=player.slug%>"><%=player.playername%>: </strong></a>
+				<%=player.position%>
+
+			</li>
+		<%end%>
+		</ul>
+<%end%>
+</ul>
+
+<h2><a href="create/team">Create a Team</a></h2>
