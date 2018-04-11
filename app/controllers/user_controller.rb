@@ -8,6 +8,15 @@ class UserController < ApplicationController
 		erb :'users/create_user'
 	end
 
+	get '/logout' do
+		if logged_in?
+      		session.clear
+      		redirect '/login'
+    	else
+      		redirect '/'
+    	end
+	end
+
 	post '/signup' do
 		#test to make sure that the email is in the proper format
 		if params[:user][:username].empty? || params[:user][:email].empty? || params[:user][:password].empty?

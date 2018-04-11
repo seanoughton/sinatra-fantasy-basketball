@@ -1,8 +1,9 @@
-<h1>Hi <%=@user.username%>. Here is a list of all of the teams</h1>
+<h1>Hi <%=@user.username%>. Here is a list of all of your teams</h1>
 <span>-----------------------------------------------------------------------------------------------------------------------------------------------</span>
 <ul>
-<%@teams.each do |team|%>
+<%@user.teams.each do |team|%>
 	<li><strong>Team Name:</strong> <%=team.teamname%></li>
+	<a href="/team/<%=@user.id%>/edit"><em>Edit</em></a>
 	<h3>Players</h3>
 		<ul>
 		<%team.players.each do |player|%>
