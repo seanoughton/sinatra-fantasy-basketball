@@ -1,5 +1,5 @@
 require './config/environment'
-
+require 'csv'
 class ApplicationController < Sinatra::Base
 
   	configure do

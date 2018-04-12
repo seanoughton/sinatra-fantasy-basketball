@@ -11,12 +11,13 @@ class TeamController < ApplicationController
 	end
 
 	get '/teams/:slug' do
-		binding.pry
 		if logged_in?
 			@user = current_user
-			erb :'/teams/user_teams'
-		else
-			redirect '/login'
+			if params[:slug] == @user.username
+				redirect "/team/#{@user.id}/edit"
+			else
+				redirect "/teams"
+			end
 		end	
 	end
 
@@ -32,6 +33,7 @@ class TeamController < ApplicationController
 	get "/team/:id/edit" do
 		if logged_in?
 			@team = Team.find(params[:id])
+			@user = current_user
 			erb :'/teams/edit'
 		else
 			redirect '/login'
