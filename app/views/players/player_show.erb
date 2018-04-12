@@ -26,11 +26,7 @@
 
 
 <%if !@player.team %>
-	<form action="/add/playertoteam" method="POST">
-		<input type="hidden" id="" name="player[player_id]" value="<%=@player.id%>">
-		<input type="hidden" id="" name="user[user_id]" value="<%=@user.id%>">
-		<input type="submit" value="Add Player to Your Team">
-	</form>
+	<h3><a href="/team/<%=@user.id%>/edit">Add this player to one of your teams</a></h3>
 <%end%>
 
 

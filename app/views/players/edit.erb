@@ -1,0 +1,41 @@
+<!-- fake top bar -->
+<ul>
+	<li><a href="/teams">View all Teams</a></li>
+	<li><a href="/team/new">Create a Team</a></li>
+</ul>
+<!-- fake top bar -->
+
+
+<h1> Edit Player: <%=@player.playername%></h1>
+
+	<form action="/player/<%=@player.id%>/edit" method="POST">
+	  <input type="hidden" name="_method" value="PATCH">
+
+	  <label>Name</label><input type="text" name="player[playername]" id="player_name" value="<%= @player.playername%>">
+	  <br></br>
+
+	  <label>Position</label><input type="text" name="player[position]" id="player_position" value="<%= @player.position%>">
+	  <br></br>
+
+	  <label>Field Goal %</label><input type="text" name="player[fg_perc]" id="player_fg_perc" value="<%= @player.fg_perc%>">
+	  <br></br>
+
+	  <label>Three Point %</label><input type="text" name="player[three_pt_perc]" id="player_three_pt_perc" value="<%= @player.three_pt_perc%>">
+	  <br></br>
+
+	  <label>Free Throw %</label><input type="text" name="player[free_throw_perc]" id="player_free_throw_perc" value="<%= @player.free_throw_perc%>">
+	  <br></br>
+
+	  <label>Offensive Rebounds</label><input type="text" name="player[oreb]" id="player_oreb" value="<%= @player.oreb%>">
+	  <br></br>
+
+	  <label>Rebounds</label><input type="text" name="player[reb]" id="player_reb" value="<%= @player.reb%>">
+	  <br></br>
+
+	  <input type="submit" value="Edit Player">
+	</form>
+
+
+<br></br>
+<h3><a href="/logout">Log Out</a>
+
