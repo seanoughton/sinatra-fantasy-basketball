@@ -24,6 +24,7 @@ class TeamController < ApplicationController
 	get '/team/new' do
 		if logged_in?
       		@user = current_user
+      		@players = available_players
       		erb :'/teams/create_team'
     	else
       		redirect '/login'
@@ -34,6 +35,7 @@ class TeamController < ApplicationController
 		if logged_in?
 			@team = Team.find(params[:id])
 			@user = current_user
+			@players = available_players
 			erb :'/teams/edit'
 		else
 			redirect '/login'
@@ -66,7 +68,30 @@ class TeamController < ApplicationController
 	post '/team/new' do
 		team = Team.create(params[:team])
 		team.save
+		@user = current_user
+		@user.teams << team
 		redirect '/teams'
+	end
+
+	helpers do
+		#rewrite these with collect or map or tap or something
+		def taken_players
+			@taken_players = []
+      		Team.all.each do |team|
+  				@taken_players << team.players
+  			end
+  			@taken_players
+		end
+
+		def available_players
+			@available_players = []
+  			Player.all.each do |player|
+  				if !taken_players.flatten.include?(player)
+  					@available_players << player
+  				end
+  			end
+  			@available_players
+		end
 	end
 
 

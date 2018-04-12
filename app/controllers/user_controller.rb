@@ -37,7 +37,7 @@ class UserController < ApplicationController
 	      session[:user_id] = @user.id
 	      redirect to '/teams'
 	    else
-	      redirect to '/login'
+	      redirect to '/signup'
 	    end
 	end
 

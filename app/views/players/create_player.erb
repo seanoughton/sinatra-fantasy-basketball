@@ -1,10 +1,16 @@
 <h1> Create a Player</h1>
 <form action="/player/new" method="POST">
 
-  <lable>Content</label>
-    <input type="text" id="content" name="tweet[content]"><br></br>
+  	<lable>Name:</label> <input type="text" id="content" name="player[playername]"><br></br>
+	<lable>Position:</label> <input type="text" id="content" name="player[position]"><br></br>
+	<lable>Field Goal Percentage:</label> <input type="text" id="content" name="player[fg_perc]"><br></br>
+	<lable>Three Point Percentage:</label> <input type="text" id="content" name="player[three_pt_perc]"><br></br>
+	<lable>Free Throw Percentage:</label> <input type="text" id="content" name="player[free_throw_perc]"><br></br>
+	<lable>Offensive Rebounds:</label> <input type="text" id="content" name="player[oreb]"><br></br>
+	<lable>Rebounds:</label> <input type="text" id="content" name="player[reb]"><br></br>
 
-    <input type="submit" id="submit" value="Create Player">
+	<input type="submit" id="submit" value="Create Player">
 </form>
 
+<br></br>
 <h3><a href="/logout">Log Out</a>

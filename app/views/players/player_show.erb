@@ -1,6 +1,20 @@
+
+<!-- fake top bar -->
+<ul>
+	<li><a href="/teams">View all Teams</a></li>
+	<li><a href="/team/new">Create a Team</a></li>
+</ul>
+<!-- fake top bar -->
+
+
 <h1> Here is the info about <%=@player.playername%> </h1>
 
-<h3> Plays for: <%=@player.team.teamname%> </h3>
+<%if @player.team %>
+	<h3> Plays for: <%=@player.team.teamname%> </h3>
+<%else%>
+	<h3> Not currently on a Team </h3>
+<%end%>
+
 
 <h3>Position: <%=@player.position%></h3>
 <h3>Field Goal Percentage: <%=@player.fg_perc%></h3>
@@ -8,4 +22,18 @@
 <h3>Free Throw Percentage: <%=@player.free_throw_perc%></h3>
 <h3>Offensive Rebounds: <%=@player.oreb%></h3>
 <h3>Rebounds: <%=@player.reb%></h3>
+
+
+
+<%if !@player.team %>
+	<form action="/add/playertoteam" method="POST">
+		<input type="hidden" id="" name="player[player_id]" value="<%=@player.id%>">
+		<input type="hidden" id="" name="user[user_id]" value="<%=@user.id%>">
+		<input type="submit" value="Add Player to Your Team">
+	</form>
+<%end%>
+
+
+<br></br>
+<h3><a href="/logout">Log Out</a>
 

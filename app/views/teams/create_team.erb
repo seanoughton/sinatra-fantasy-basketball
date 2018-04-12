@@ -1,3 +1,10 @@
+<!-- fake top bar -->
+<ul>
+	<li><a href="/teams">View all Teams</a></li>
+</ul>
+<!-- fake top bar -->
+
+
 
 <h1> <%=@user.username%> Create a Team</h1>
 <form action="/team/new" method="POST">
@@ -5,7 +12,7 @@
   <lable>Team Name</label> <input type="text" id="content" name="team[teamname]"><br></br>
 
   <h3>Choose Players</h3>
-  <%Player.all.each do |player|%>
+  <%@players.each do |player|%>
      <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><%=player.playername%></input>
    <br></br>
  <%end%>

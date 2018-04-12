@@ -1,5 +1,15 @@
-<h1> Edit your Teams </h1>
+<!-- fake top bar -->
+<ul>
+	<li><a href="/teams">View all Teams</a></li>
+	<li><a href="/team/new">Create a Team</a></li>
+</ul>
+<!-- fake top bar -->
+
+
+<h1> Edit your Teams: <%=@user.username%></h1>
 <!-- Make it possible to edit all of the users teams -->
+
+
 <%@user.teams.each do |team|%>
 	<%=team.teamname%>
 	<form action="/team/<%=@team.id%>/edit" method="POST">
@@ -20,7 +30,7 @@
 
 	  <h3>Add Players</h3>
 
-	  <% Player.all.each do |player| %>
+	  <% @players.each do |player| %>
 	    <label><%= player.playername %></label>
 	    <input type="checkbox" id="add_<%=player.id%>" name="add_player[player_ids][]" value="<%= player.id %>"><br>
 	  <% end %>
@@ -31,4 +41,7 @@
 	</form>
 
 <%end%>
+
+<br></br>
+<h3><a href="/logout">Log Out</a>
 

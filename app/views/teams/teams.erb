@@ -1,8 +1,19 @@
+<!-- fake top bar -->
+<ul>
+	<li><a href="/team/new">Create a Team</a></li>
+</ul>
+<!-- fake top bar -->
+
+
 <h1>Hi <%=@user.username%>. Here is a list of all of the teams</h1>
 <span>-----------------------------------------------------------------------------------------------------------------------------------------------</span>
 <ul>
 <%@teams.each do |team|%>
 	<li><strong>Team Name:</strong> <%=team.teamname%></li>
+	<%if team.user == @user%>
+		<h4><a href="/team/<%=@user.id%>/edit">Edit Your Team</a></h4>
+	<%end%>
+	<h4>Team Owner: <%=team.user.username%>
 	<h3>Players</h3>
 		<ul>
 		<%team.players.each do |player|%>
@@ -19,3 +30,5 @@
 <br></br>
 
 <h2><a href="/team/new">Create a Team</a></h2>
+<br></br>
+<h3><a href="/logout">Log Out</a>
