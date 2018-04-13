@@ -42,6 +42,16 @@ class TeamController < ApplicationController
 		end
 	end
 
+	get "/team/:id/delete" do
+		if logged_in?
+			@team = Team.find(params[:id])
+			@user = current_user
+			erb :'/teams/delete'
+		else
+			redirect '/login'
+		end
+	end
+
 	patch '/team/:id/edit' do
 		@team = Team.find(params[:id])
 		@team.teamname = params[:team][:teamname]
@@ -81,24 +91,34 @@ class TeamController < ApplicationController
 	end
 
 	post '/team/new' do
-		team = Team.create(params[:team])
-		team.save
-		@user = current_user
-		@user.teams << team
-		redirect '/teams'
+		if !params[:team][:teamname] || !params[:team][:player_ids]
+			redirect 'team/new'
+		else
+			team = Team.create(params[:team])
+			team.save
+			@user = current_user
+			@user.teams << team
+			redirect '/teams'
+		end
 	end
 
 	helpers do
-		#rewrite these with collect or map or tap or something
+
 		def taken_players
-			@taken_players = []
-      		Team.all.each do |team|
-  				@taken_players << team.players
+			#@taken_players = []
+      		#Team.all.each do |team|
+  				#@taken_players << team.players
+  			#end
+  			#@taken_players
+
+  			Team.all.collect do |team|
+  				team.players
   			end
-  			@taken_players
+
 		end
 
 		def available_players
+=begin
 			@available_players = []
   			Player.all.each do |player|
   				if !taken_players.flatten.include?(player)
@@ -106,6 +126,14 @@ class TeamController < ApplicationController
   				end
   			end
   			@available_players
+=end
+			#binding.pry
+  			Player.all.collect do |player|
+  				if !taken_players.flatten.include?(player)
+  					player
+  				end
+  			end.compact
+
 		end
 	end
 

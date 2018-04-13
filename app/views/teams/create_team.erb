@@ -41,7 +41,7 @@
             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Charlie's Warriors" name="team[teamname]">
           </div>
 
-          <button type="submit" class="btn btn-primary">Create Team</button>
+        <button type="submit" class="btn btn-primary">Create Team</button>         
 
           <br></br>
           <div class="col-md">
@@ -50,7 +50,7 @@
                 <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank">  <%=player.playername%>: <%=player.position%></a></input>
                 <br></br>
               <%end%>
-          
+             
         </form>
       </div> <!-- end col --> 
   </div><!-- end row -->
