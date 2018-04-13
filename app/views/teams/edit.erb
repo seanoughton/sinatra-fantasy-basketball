@@ -4,6 +4,8 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  
+  <a class="navbar-brand" href="#"><%=@user.username%>:</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -21,47 +23,59 @@
       </li>
   </div>
 </nav>
-
+<!-- Nav Bar -->
 <br></br>
 
+<div class="container">
+	<div class="row">
+		<div class="col-md">
+			<h1> Edit your Team:</h1>
+		</div>
+	</div><!-- end row -->
+</div> <!-- end container -->	
 
 
 
-<h1> Edit your Teams: <%=@user.username%></h1>
-<!-- Make it possible to edit all of the users teams -->
+<div class="container">
+	<div class="row">
+		<div class="col-md">
+			<%@user.teams.each do |team|%>
+				<%=team.teamname%>
+				<form action="/team/<%=@team.id%>/edit" method="POST">
+				  <input type="hidden" name="_method" value="PATCH">
+
+				  <h3>Team Name</h3>
+				  <input type="text" name="team[teamname]" id="team_name" value="<%= team.teamname%>">
+				  <br></br>
+
+				  <h3>Remove Players</h3>
+
+				  <% team.players.all.each do |player| %>
+				    <label><a href="/player/<%=player.slug%>" target="blank"><%=player.playername%>: <%=player.position%></a></label>
+				    <input type="checkbox" id="remove_<%=player.id%>" name="remove_player[player_ids][]" value="<%= player.id %>"><br>
+				  <% end %>
+
+				  <br></br>
+
+				  <h3>Add Players</h3>
+
+				  <% @players.each do |player| %>
+				    <label><a href="/player/<%=player.slug%>" target="blank"><%=player.playername%>: <%=player.position%></a></label>
+				    <input type="checkbox" id="add_<%=player.id%>" name="add_player[player_ids][]" value="<%= player.id %>"><br>
+				  <% end %>
+
+				  <br></br>
+
+				  <button type="submit" class="btn btn-primary">Edit Team</button>
+				</form>
+
+			<%end%>
+		</div>
+	</div><!-- end row -->
+</div> <!-- end container -->	
 
 
-<%@user.teams.each do |team|%>
-	<%=team.teamname%>
-	<form action="/team/<%=@team.id%>/edit" method="POST">
-	  <input type="hidden" name="_method" value="PATCH">
 
-	  <h3>Edit Team Name</h3>
-	  <input type="text" name="team[teamname]" id="team_name" value="<%= team.teamname%>">
-	  <br></br>
-
-	  <h3>Remove Players</h3>
-
-	  <% team.players.all.each do |player| %>
-	    <label><%= player.playername %></label>
-	    <input type="checkbox" id="remove_<%=player.id%>" name="remove_player[player_ids][]" value="<%= player.id %>"><br>
-	  <% end %>
-
-	  <br></br>
-
-	  <h3>Add Players</h3>
-
-	  <% @players.each do |player| %>
-	    <label><%= player.playername %></label>
-	    <input type="checkbox" id="add_<%=player.id%>" name="add_player[player_ids][]" value="<%= player.id %>"><br>
-	  <% end %>
-
-	  <br></br>
-
-	  <input type="submit" value="Edit Team">
-	</form>
-
-<%end%>
 
 
 

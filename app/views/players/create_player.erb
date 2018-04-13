@@ -5,6 +5,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <a class="navbar-brand" href="#"><%=@user.username%>:</a>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
@@ -21,23 +23,48 @@
       </li>
   </div>
 </nav>
-
+<!-- Nav Bar -->
 <br></br>
 
+<div class="container">
+  <div class="row">
+      <div class="col-md">
+        <h1> Create a Player</h1>
+      </div> <!-- end col --> 
+  </div><!-- end row -->
+</div> <!-- end container --> 
 
-<h1> Create a Player</h1>
-<form action="/player/new" method="POST">
+<div class="container">
+  <div class="row">
+      <div class="col-md">
+        <form action="/player/new" method="POST">
+          <lable>Rank:</label> <input type="text" id="content" name="player[rank]"><br></br>
+          <lable>Name:</label> <input type="text" id="content" name="player[playername]"><br></br>
+          <lable>Position:</label> <input type="text" id="content" name="player[position]"><br></br>
+          <lable>Age:</label> <input type="text" id="content" name="player[age]"><br></br>
+          <lable>NBA Team:</label> <input type="text" id="content" name="player[originalteam]"><br></br>
+          <lable>Field Goal Percentage:</label> <input type="text" id="content" name="player[fg_perc]"><br></br>
+          <lable>Three Point Percentage:</label> <input type="text" id="content" name="player[three_pt_perc]"><br></br>
+          <lable>Two Point Percentage:</label> <input type="text" id="content" name="player[two_pt_perc]"><br></br>
+          <lable>Free Throw Percentage:</label> <input type="text" id="content" name="player[free_throw_perc]"><br></br>
+          <lable>Offensive Rebounds:</label> <input type="text" id="content" name="player[oreb]"><br></br>
+          <lable>Rebounds:</label> <input type="text" id="content" name="player[reb]"><br></br>
+          <lable>Assists:</label> <input type="text" id="content" name="player[assists]"><br></br>
+          <lable>Steals:</label> <input type="text" id="content" name="player[steals]"><br></br>
+          <lable>Blocks:</label> <input type="text" id="content" name="player[blocks]"><br></br>
+          <lable>Turnovers:</label> <input type="text" id="content" name="player[turnovers]"><br></br>
+          <lable>Points Per Game:</label> <input type="text" id="content" name="player[ps_per_game]">
+            <br></br>
+            <br>
 
-  	<lable>Name:</label> <input type="text" id="content" name="player[playername]"><br></br>
-	<lable>Position:</label> <input type="text" id="content" name="player[position]"><br></br>
-	<lable>Field Goal Percentage:</label> <input type="text" id="content" name="player[fg_perc]"><br></br>
-	<lable>Three Point Percentage:</label> <input type="text" id="content" name="player[three_pt_perc]"><br></br>
-	<lable>Free Throw Percentage:</label> <input type="text" id="content" name="player[free_throw_perc]"><br></br>
-	<lable>Offensive Rebounds:</label> <input type="text" id="content" name="player[oreb]"><br></br>
-	<lable>Rebounds:</label> <input type="text" id="content" name="player[reb]"><br></br>
+          <input type="submit" id="submit" value="Create Player">
+        </form>
+        
+      </div> <!-- end col --> 
+  </div><!-- end row -->
+</div> <!-- end container --> 
 
-	<input type="submit" id="submit" value="Create Player">
-</form>
 
-<br></br>
-<h3><a href="/logout">Log Out</a>
+
+
+

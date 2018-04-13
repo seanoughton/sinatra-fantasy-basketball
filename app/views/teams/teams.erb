@@ -5,6 +5,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <a class="navbar-brand" href="#"><%=@user.username%>:</a>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -21,6 +23,7 @@
       </li>
   </div>
 </nav>
+<!-- Nav Bar -->
 
 <br></br>
 
@@ -28,7 +31,7 @@
 <div class="container">
 		<div class="row">
 			<div class="col-sm-2"></div>
-			<div class="col-sm-8"><h3>Hi <%=@user.username%>. Here is a list of all of the teams.</h3></div>
+			<div class="col-sm-8"><h3 class="text-secondary">Here is a list of all of the teams.</h3></div>
 			<div class="col-sm-2"></div>
 		</div>
 </div>
@@ -36,42 +39,59 @@
 <br></br>
 
 <!-- Content -->
-
-<%@teams.each do |team|%>
+<div class="container">
 	<div class="row">
-		<div class="col-sm-12"><h4><strong>Team Name:</strong> <%=team.teamname%>
-			<%if team.user == @user%>
-			<a href="/team/<%=@user.id%>/edit"><em>(Edit Team)</em></a>	</h4>
-			<%end%>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-sm-12">
-			<h4>Team Owner: <%=team.user.username%></h4>
-		</div>
-	</div>
+			<div class="col-sm-12">
+				<%if @teams.all.empty?%>
+				<h4> There are currently no teams.  Why don't you create a Team! </h4>
+				<%end%>
+			</div> <!-- end col -->	
+	</div><!-- end row -->
+</div> <!-- end container -->	
+		
 
-	<div class="row">
-		<div class="col-sm-12">
-			<h3>Players</h3>
-		</div>
-	</div>
+<div class="container">
+	<div class="row">	
+		<div class="col-lg">
+			<%@teams.each do |team|%>
+				<h4 class="text-success"><strong>Team Name:</strong> <%=team.teamname%>
+				<%if team.user == @user%>
+				<div class="row">	
+					<div class="col-md-2">
+					<form action="/team/<%=team.id%>/edit" method="GET">
+						<button type="submit" class="btn btn-primary">Edit Team</button>
+					</form>
+					</div> <!--end col-->
+					<br>
+					<div class="col-md-4">
+					<form action="/team/<%=team.id%>/delete" method="POST">
+						<input type="hidden" name="_method" value="delete">
+						<button type="submit" class="btn btn-primary">Delete Team</button>
+					</form>
+					</div> <!--end col-->
+				</div> <!--end row-->
+				<%end%>
+		
 
-	
-		<ul>
-			<div class="row">
-				<div class="col-sm-12">
+				<h4 class="text-info">Team Owner: <%=team.user.username%></h4>
+				<h3 class="text-secondary">Players</h3>
+				
+				<ul>
 					<%team.players.each do |player|%>
 						<li><strong><a href="/player/<%=player.slug%>"><%=player.playername%>: </strong></a>
 							<%=player.position%></strong>
 						</li>
 					<%end%>
-				</div>
-			</div>
-		</ul>
-		<h4>---------------------------------------------------------------------------------------</h4>
-		<br></br>
-<%end%>
+				</ul>
+						<h4>---------------------------------------------------------------------------------------</h4>
+				<br></br>
+			<%end%>
+		</div> <!-- end col -->	
+	</div> <!-- end row -->
+</div>	<!-- end container -->	
+
+
+
+
 
 

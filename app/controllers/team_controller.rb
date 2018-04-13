@@ -44,7 +44,7 @@ class TeamController < ApplicationController
 
 	patch '/team/:id/edit' do
 		@team = Team.find(params[:id])
-
+		@team.teamname = params[:team][:teamname]
 		#add players to team
 		if params[:add_player]
 			players_to_add = params[:add_player][:player_ids]
@@ -63,6 +63,21 @@ class TeamController < ApplicationController
 
 		@team.save
 		redirect '/teams'
+	end
+
+	delete '/team/:id/delete' do
+		if logged_in?
+			if params[:id]
+				@team = Team.find(params[:id])
+				@team.delete
+				redirect '/teams'
+			else
+				redirect '/teams'
+			end
+		else
+			redirect '/login'
+		end
+		
 	end
 
 	post '/team/new' do

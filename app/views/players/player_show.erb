@@ -5,6 +5,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <a class="navbar-brand" href="#"><%=@user.username%>:</a>
+
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
@@ -21,34 +24,62 @@
       </li>
   </div>
 </nav>
+<!-- Nav Bar -->
 
 <br></br>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <h1> Here is the info about <%=@player.playername%> </h1>
+    </div> <!-- end col-->
+  </div><!-- end row -->
+</div> <!-- end container --> 
+
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <%if @player.team %>
+        <h3> Plays for: <%=@player.team.teamname%> </h3>
+      <%else%>
+        <h3> Available </h3>
+      <%end%>
+      <br>
+    </div> <!-- end col-->
+  </div><!-- end row -->
+</div> <!-- end container --> 
+
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <h5>Position: <%=@player.position%></h5>
+      <h5>Age: <%=@player.age%></h3>
+      <h5>NBA Team: <%=@player.originalteam%></h3>
+
+      <h5>Field Goal Percentage: <%=@player.fg_perc%></h5>
+      <h5>Three Point Percentage: <%=@player.three_pt_perc%></h5>
+      <h5>Two Point Percentage: <%=@player.two_pt_perc%></h5>
+      <h5>Free Throw Percentage: <%=@player.free_throw_perc%></h5>
+      <h5>Offensive Rebounds: <%=@player.oreb%></h5>
+      <h5>Rebounds: <%=@player.reb%></h5>
+      <h5>Assists: <%=@player.assists%></h5>
+      <h5>Steals: <%=@player.steals%></h5>
+      <h5>Blocks: <%=@player.blocks%></h5>
+      <h5>Turnovers: <%=@player.turnovers%></h5>
+      <h5>Points Per Game: <%=@player.ps_per_game%></h5>
+
+        <!-- <%if !@player.team %>
+          <h3><a href="/player/<%=@player.id%>/edit">Add this player to one of your teams</a></h3>
+        <%end%>
+
+        <a href="/player/<%=@user.id%>/edit"><em>(Edit Player)</em></a>
+        -->
+    </div> <!-- end col-->
+  </div><!-- end row -->
+</div> <!-- end container --> 
 
 
-<h1> Here is the info about <%=@player.playername%> </h1>
 
-<%if @player.team %>
-	<h3> Plays for: <%=@player.team.teamname%> </h3>
-<%else%>
-	<h3> Not currently on a Team </h3>
-<%end%>
-
-
-<h3>Position: <%=@player.position%></h3>
-<h3>Field Goal Percentage: <%=@player.fg_perc%></h3>
-<h3>Three Point Percentage: <%=@player.three_pt_perc%></h3>
-<h3>Free Throw Percentage: <%=@player.free_throw_perc%></h3>
-<h3>Offensive Rebounds: <%=@player.oreb%></h3>
-<h3>Rebounds: <%=@player.reb%></h3>
-
-<a href="/player/<%=@user.id%>/edit"><em>(Edit Player)</em></a>
-
-
-
-<%if !@player.team %>
-	<h3><a href="/player/<%=@player.id%>/edit">Add this player to one of your teams</a></h3>
-<%end%>
 
 
 
