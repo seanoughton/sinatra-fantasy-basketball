@@ -1,10 +1,29 @@
+<!-- Nav Bar -->
 
-<!-- fake top bar -->
-<ul>
-	<li><a href="/teams">View all Teams</a></li>
-	<li><a href="/team/new">Create a Team</a></li>
-</ul>
-<!-- fake top bar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/teams">Teams</a>
+      </li>
+     <li class="nav-item ">
+        <a class="nav-link" href="/team/new">Create a Team</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/player/new">Create a Player</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log Out</a>
+      </li>
+  </div>
+</nav>
+
+<br></br>
+
 
 
 <h1> Here is the info about <%=@player.playername%> </h1>
@@ -23,13 +42,13 @@
 <h3>Offensive Rebounds: <%=@player.oreb%></h3>
 <h3>Rebounds: <%=@player.reb%></h3>
 
+<a href="/player/<%=@user.id%>/edit"><em>(Edit Player)</em></a>
+
 
 
 <%if !@player.team %>
-	<h3><a href="/team/<%=@user.id%>/edit">Add this player to one of your teams</a></h3>
+	<h3><a href="/player/<%=@player.id%>/edit">Add this player to one of your teams</a></h3>
 <%end%>
 
 
-<br></br>
-<h3><a href="/logout">Log Out</a>
 

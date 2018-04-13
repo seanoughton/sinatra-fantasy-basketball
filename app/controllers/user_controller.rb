@@ -11,15 +11,16 @@ class UserController < ApplicationController
 	get '/logout' do
 		if logged_in?
       		session.clear
-      		redirect '/login'
+      		redirect '/'
     	else
       		redirect '/'
     	end
 	end
 
 	post '/signup' do
+		address = ValidEmail2::Address.new(params[:user][:email])
 		#test to make sure that the email is in the proper format
-		if params[:user][:username].empty? || params[:user][:email].empty? || params[:user][:password].empty?
+		if params[:user][:username].empty? || params[:user][:email].empty? || params[:user][:password].empty? || !address.valid?
 			#tell the user someway that they need to enter in a password
       		redirect to '/signup'
     	else

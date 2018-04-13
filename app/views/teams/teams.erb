@@ -1,34 +1,77 @@
-<!-- fake top bar -->
-<ul>
-	<li><a href="/team/new">Create a Team</a></li>
-</ul>
-<!-- fake top bar -->
+<!-- Nav Bar -->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Teams<span class="sr-only">(current)</span></a>
+      </li>
+     <li class="nav-item">
+        <a class="nav-link" href="/team/new">Create a Team</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/player/new">Create a Player</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log Out</a>
+      </li>
+  </div>
+</nav>
+
+<br></br>
 
 
-<h1>Hi <%=@user.username%>. Here is a list of all of the teams</h1>
-<span>-----------------------------------------------------------------------------------------------------------------------------------------------</span>
-<ul>
+<div class="container">
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8"><h3>Hi <%=@user.username%>. Here is a list of all of the teams.</h3></div>
+			<div class="col-sm-2"></div>
+		</div>
+</div>
+
+<br></br>
+
+<!-- Content -->
+
 <%@teams.each do |team|%>
-	<li><strong>Team Name:</strong> <%=team.teamname%></li>
-	<%if team.user == @user%>
-		<h4><a href="/team/<%=@user.id%>/edit">Edit Your Team</a></h4>
-	<%end%>
-	<h4>Team Owner: <%=team.user.username%>
-	<h3>Players</h3>
+	<div class="row">
+		<div class="col-sm-12"><h4><strong>Team Name:</strong> <%=team.teamname%>
+			<%if team.user == @user%>
+			<a href="/team/<%=@user.id%>/edit"><em>(Edit Team)</em></a>	</h4>
+			<%end%>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<h4>Team Owner: <%=team.user.username%></h4>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<h3>Players</h3>
+		</div>
+	</div>
+
+	
 		<ul>
-		<%team.players.each do |player|%>
-			<li><strong><a href="/player/<%=player.slug%>"><%=player.playername%>: </strong></a>
-				<%=player.position%>
-			</li>
-			<br></br>
-		<%end%>
+			<div class="row">
+				<div class="col-sm-12">
+					<%team.players.each do |player|%>
+						<li><strong><a href="/player/<%=player.slug%>"><%=player.playername%>: </strong></a>
+							<%=player.position%></strong>
+						</li>
+					<%end%>
+				</div>
+			</div>
 		</ul>
 		<h4>---------------------------------------------------------------------------------------</h4>
+		<br></br>
 <%end%>
-</ul>
 
-<br></br>
 
-<h2><a href="/team/new">Create a Team</a></h2>
-<br></br>
-<h3><a href="/logout">Log Out</a>
