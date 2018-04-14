@@ -34,42 +34,109 @@
 	</div><!-- end row -->
 </div> <!-- end container -->	
 
-
-
 <div class="container">
 	<div class="row">
 		<div class="col-md">
-			<%@user.teams.each do |team|%>
-				<%=team.teamname%>
 				<form action="/team/<%=@team.id%>/edit" method="POST">
+					<button type="submit" class="btn btn-success">Edit Team</button>
+					<br></br>
 				  <input type="hidden" name="_method" value="PATCH">
-
 				  <h3>Team Name</h3>
-				  <input type="text" name="team[teamname]" id="team_name" value="<%= team.teamname%>">
+				  <input type="text" name="team[teamname]" id="team_name" value="<%=@team.teamname%>">
 				  <br></br>
+	    </div> <!-- end col --> 
+	</div><!-- end row -->
 
+
+
+	<div class="row">
+		<div class="col-md">
 				  <h3>Remove Players</h3>
+	     </div> <!-- end col --> 
+	</div><!-- end row -->
 
-				  <% team.players.all.each do |player| %>
+	<div class="row">
+		<div class="col-md">
+				  <%@team.players.all.each do |player| %>
 				    <label><a href="/player/<%=player.slug%>" target="blank"><%=player.playername%>: <%=player.position%></a></label>
 				    <input type="checkbox" id="remove_<%=player.id%>" name="remove_player[player_ids][]" value="<%= player.id %>"><br>
 				  <% end %>
+        </div> <!-- end col --> 
+	</div><!-- end row -->
+	<br></br>
 
-				  <br></br>
+	<div class="row">
+		<div class="col-md">
+			<h3>Add Players</h3>
+			<h8 class="text-info">Click on a player to see their stats</h8>
+        </div> <!-- end col --> 
+	</div><!-- end row -->
+	<br>
 
-				  <h3>Add Players</h3>
+	<div class="row">
 
-				  <% @players.each do |player| %>
-				    <label><a href="/player/<%=player.slug%>" target="blank"><%=player.playername%>: <%=player.position%></a></label>
-				    <input type="checkbox" id="add_<%=player.id%>" name="add_player[player_ids][]" value="<%= player.id %>"><br>
-				  <% end %>
+		<div class="col-md"> <!-- Point Guards Col-->
+      <h6>Point Guards</h6>
+        <%@players.each do |player|%>
+          <%if player.position == "PG" %>
+            <input type="checkbox" name="add_player[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"><h8> <%=player.playername%></h8></a></input>
+            <br></br>
+          <%end%>
+        <%end%>         
+      </div> <!-- end col --> 
 
-				  <br></br>
+        <div class="col-md"> <!-- Shooting Guards Col-->
+      <h6>Shooting Guards</h6>
+        <%@players.each do |player|%>
+          <%if player.position == "SG" %>
+            <input type="checkbox" name="add_player[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"> <h8> <%=player.playername%></h8></a></input>
+            <br></br>
+          <%end%>
+        <%end%>         
+      </div> <!-- end col --> 
 
-				  <button type="submit" class="btn btn-primary">Edit Team</button>
-				</form>
+        <div class="col-md"> <!-- Small Forwards Col-->
+	      <h6>Small Forwards</h6>
+	        <%@players.each do |player|%>
+	          <%if player.position == "SF" %>
+	            <input type="checkbox" name="add_player[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"><h8> <%=player.playername%></h8></a></input>
+	            <br></br>
+	          <%end%>
+	        <%end%>         
+      	</div> <!-- end col --> 
 
-			<%end%>
+      	<div class="col-md"> <!-- Power Forwards Col-->
+      <h6>Power Forwards</h6>
+        <%@players.each do |player|%>
+          <%if player.position == "PF" %>
+            <input type="checkbox" name="add_player[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"> <h8> <%=player.playername%></h8></a></input>
+            <br></br>
+          <%end%>
+        <%end%>         
+      </div> <!-- end col --> 
+
+      <div class="col-md"> <!-- Centers Col-->
+      <h6>Centers</h6>
+        <%@players.each do |player|%>
+          <%if player.position == "C" %>
+            <input type="checkbox" name="add_player[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"><h8> <%=player.playername%></h8></a></input>
+            <br></br>
+          <%end%>
+        <%end%>         
+      </div> <!-- end col --> 
+
+
+
+
+	</div><!-- end row -->
+	<br></br>
+
+
+
+	
+	</form>
+
+		
 		</div>
 	</div><!-- end row -->
 </div> <!-- end container -->	

@@ -41,18 +41,74 @@
             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Charlie's Warriors" name="team[teamname]">
           </div>
 
-        <button type="submit" class="btn btn-primary">Create Team</button>         
+        <button type="submit" class="btn btn-success">Create Team</button>
+             </div> <!-- end col --> 
+  </div><!-- end row -->         
 
-          <br></br>
-          <div class="col-md">
-              <h3>Choose Players</h3>
-              <%@players.each do |player|%>
-                <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank">  <%=player.playername%>: <%=player.position%></a></input>
-                <br></br>
-              <%end%>
-             
-        </form>
+  <br>
+
+   <div class="row">
+      <div class="col-md">
+        <h3>Choose Players</h3>
       </div> <!-- end col --> 
   </div><!-- end row -->
+
+ <br>
+
+  <div class="row">
+    <div class="col-md"> <!-- Point Guards Col-->
+      <h6>Point Guards</h6>
+        <%@players.each do |player|%>
+          <%if player.position == "PG" %>
+            <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"><h8><%=player.playername%></h8></a></input>
+            <br></br>
+          <%end%>
+        <%end%>         
+      </div> <!-- end col --> 
+
+      <div class="col-md"> <!-- Shooting Guards Col-->
+      <h6>Shooting Guards</h6>
+        <%@players.each do |player|%>
+          <%if player.position == "SG" %>
+            <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"> <h8><%=player.playername%></h8></a></input>
+            <br></br>
+          <%end%>
+        <%end%>         
+      </div> <!-- end col --> 
+
+
+      <div class="col-md"> <!-- Small Forwards Col-->
+      <h6>Small Forwards</h6>
+        <%@players.each do |player|%>
+          <%if player.position == "SF" %>
+            <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"><h8><%=player.playername%></h8></a></input>
+            <br></br>
+          <%end%>
+        <%end%>         
+      </div> <!-- end col --> 
+
+    <div class="col-md"> <!-- Power Forwards Col-->
+      <h6>Power Forwards</h6>
+        <%@players.each do |player|%>
+          <%if player.position == "PF" %>
+            <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"> <h8><%=player.playername%></h8></a></input>
+            <br></br>
+          <%end%>
+        <%end%>         
+      </div> <!-- end col --> 
+
+      <div class="col-md"> <!-- Centers Col-->
+      <h6>Centers</h6>
+        <%@players.each do |player|%>
+          <%if player.position == "C" %>
+            <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"><h8><%=player.playername%></h8></a></input>
+            <br></br>
+          <%end%>
+        <%end%>         
+      </div> <!-- end col --> 
+
+  </div><!-- end row -->
+
+  </form>
 
 

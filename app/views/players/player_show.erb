@@ -31,7 +31,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md">
-      <h1> Here is the info about <%=@player.playername%> </h1>
+      <h1> Here is the info about <span class="text-success"><%=@player.playername%>.</span></h1>
     </div> <!-- end col-->
   </div><!-- end row -->
 </div> <!-- end container --> 
@@ -40,9 +40,9 @@
   <div class="row">
     <div class="col-md">
       <%if @player.team %>
-        <h3> Plays for: <%=@player.team.teamname%> </h3>
+        <h3><span >Plays for: </span><span class="text-success"> <%=@player.team.teamname%> </span></h3>
       <%else%>
-        <h3> Available </h3>
+        <h3 class="text-warning"> Available </h3>
       <%end%>
       <br>
     </div> <!-- end col-->
@@ -50,23 +50,22 @@
 </div> <!-- end container --> 
 
 <div class="container">
-  <div class="row">
-    <div class="col-md">
-      <h5>Position: <%=@player.position%></h5>
-      <h5>Age: <%=@player.age%></h3>
-      <h5>NBA Team: <%=@player.originalteam%></h3>
 
-      <h5>Field Goal Percentage: <%=@player.fg_perc%></h5>
-      <h5>Three Point Percentage: <%=@player.three_pt_perc%></h5>
-      <h5>Two Point Percentage: <%=@player.two_pt_perc%></h5>
-      <h5>Free Throw Percentage: <%=@player.free_throw_perc%></h5>
-      <h5>Offensive Rebounds: <%=@player.oreb%></h5>
-      <h5>Rebounds: <%=@player.reb%></h5>
-      <h5>Assists: <%=@player.assists%></h5>
-      <h5>Steals: <%=@player.steals%></h5>
-      <h5>Blocks: <%=@player.blocks%></h5>
-      <h5>Turnovers: <%=@player.turnovers%></h5>
-      <h5>Points Per Game: <%=@player.ps_per_game%></h5>
+      <h5><span class="text-secondary">Position: </span><span class="text-success"><%=@player.position%></span></h5>
+      <h5><span class="text-secondary">Age: </span><span class="text-success"> <%=@player.age%></span></h5>
+      <h5><span class="text-secondary">NBA Team: </span> <span class="text-success"><%=@player.originalteam%></span></h5>
+
+      <h5><span class="text-secondary">Field Goal Percentage: </span><span class="text-success"> <%=@player.fg_perc%></span></h5>
+      <h5><span class="text-secondary">Three Point Percentage: </span><span class="text-success"> <%=@player.three_pt_perc%></span></h5>
+      <h5><span class="text-secondary">Two Point Percentage: </span><span class="text-success"> <%=@player.two_pt_perc%></span></h5>
+      <h5><span class="text-secondary">Free Throw Percentage: </span><span class="text-success"> <%=@player.free_throw_perc%></span></h5>
+      <h5><span class="text-secondary">Offensive Rebounds: </span><span class="text-success"> <%=@player.oreb%></span></h5>
+      <h5><span class="text-secondary">Rebounds: </span><span class="text-success"> <%=@player.reb%></span></h5>
+      <h5><span class="text-secondary">Assists: </span><span class="text-success"> <%=@player.assists%></span></h5>
+      <h5><span class="text-secondary">Steals: </span><span class="text-success"> <%=@player.steals%></span></h5>
+      <h5><span class="text-secondary">Blocks: </span><span class="text-success"> <%=@player.blocks%></span></h5>
+      <h5><span class="text-secondary">Turnovers: </span><span class="text-success"> <%=@player.turnovers%></span></h5>
+      <h5><span class="text-secondary">Points Per Game: </span><span class="text-success"> <%=@player.ps_per_game%></span></h5>
 
         <!-- <%if !@player.team %>
           <h3><a href="/player/<%=@player.id%>/edit">Add this player to one of your teams</a></h3>

@@ -38,6 +38,12 @@
   <div class="row">
       <div class="col-md">
         <form action="/player/new" method="POST">
+          <button type="submit" class="btn btn-success">Create Player</button>
+          <br></br>
+      </div> <!-- end col --> 
+  </div><!-- end row -->
+  <div class="row">
+      <div class="col-md">
           <lable>Rank:</label> <input type="text" id="content" name="player[rank]"><br></br>
           <lable>Name:</label> <input type="text" id="content" name="player[playername]"><br></br>
           <lable>Position:</label> <input type="text" id="content" name="player[position]"><br></br>
@@ -56,8 +62,8 @@
           <lable>Points Per Game:</label> <input type="text" id="content" name="player[ps_per_game]">
             <br></br>
             <br>
-
-          <input type="submit" id="submit" value="Create Player">
+          
+          
         </form>
         
       </div> <!-- end col --> 
