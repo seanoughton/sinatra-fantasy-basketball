@@ -15,6 +15,11 @@ class UserController < ApplicationController
 		erb :'users/create_user'
 	end
 
+	get '/signup/usernameproblem' do
+		flash[:message] = "This User Name it already taken. Please choose another User Name."
+		erb :'users/create_user'
+	end
+
 	get '/logout' do
 		if logged_in?
       		session.clear
@@ -28,12 +33,13 @@ class UserController < ApplicationController
 
 		#USER VALIDATIONS
 		address = ValidEmail2::Address.new(params[:user][:email])
-
+	
 		#test to make sure that the email is in the proper format
 		if params[:user][:username].empty? || params[:user][:email].empty? || params[:user][:password].empty? || !address.valid?
-			#tell the user someway that they need to enter in a password
 			flash[:message] = "Please fill out all of the fields."
       		redirect to '/signup/problem'
+      	elsif username_exists?
+      		redirect to '/signup/usernameproblem'
     	else
 			@user = User.create(params[:user])
 			@user.save
@@ -53,6 +59,13 @@ class UserController < ApplicationController
 	    else
 	      redirect to '/login'
 	    end
+	end
+
+	helpers do
+
+		def username_exists? #Returns true if username is taken
+			!!User.find_by(username: params[:user][:username])
+		end
 	end
 
 

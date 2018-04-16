@@ -10,7 +10,7 @@ class TeamController < ApplicationController
 		end	
 	end
 
-	get '/teams/:slug' do #Read a Team
+	get '/teams/:slug' do #Read an individual Team
 		if logged_in? #USER VALIDATION
 			@user = current_user
 			if params[:slug] == @user.username
@@ -40,6 +40,16 @@ class TeamController < ApplicationController
     	else
       		redirect '/login'
     	end	
+	end
+
+	get '/userteams' do
+		if logged_in? #USER VALIDATION
+      		@user = current_user
+      		erb :'/teams/user_teams'
+      	else
+      		redirect '/login'
+      	end
+
 	end
 
 	get "/team/:id/edit" do
@@ -126,30 +136,14 @@ class TeamController < ApplicationController
 
 	helpers do
 
-		def taken_players
-			#@taken_players = []
-      		#Team.all.each do |team|
-  				#@taken_players << team.players
-  			#end
-  			#@taken_players
-
+		def taken_players #returns an array of players on teams
   			Team.all.collect do |team|
   				team.players
   			end
 
 		end
 
-		def available_players
-=begin
-			@available_players = []
-  			Player.all.each do |player|
-  				if !taken_players.flatten.include?(player)
-  					@available_players << player
-  				end
-  			end
-  			@available_players
-=end
-			
+		def available_players #returns an array of available players
   			Player.all.collect do |player|
   				if !taken_players.flatten.include?(player)
   					player
@@ -158,7 +152,7 @@ class TeamController < ApplicationController
 
 		end
 
-		def collect_existing_teams
+		def collect_existing_teams #returns an array of existing teams
 			Team.all.collect do |team|
 				if team.id == params[:id].to_i
 					team
@@ -166,7 +160,8 @@ class TeamController < ApplicationController
 			end.compact
 		end
 
-		def team_exists?
+		#checks to see if a team exists, this is here so that the routes won't crash if a user tries to write something like /teams/1/edit, and there is no team with a team_id of 1
+		def team_exists? 
 			!collect_existing_teams.empty?
 		end
 	end

@@ -1,6 +1,4 @@
 require './config/environment'
-require 'csv'
-require 'rack-flash'
 class ApplicationController < Sinatra::Base
 
   	configure do
@@ -20,7 +18,7 @@ class ApplicationController < Sinatra::Base
 	      !!session[:user_id]
 	    end
 
-	    def current_user
+	    def current_user #returns the current user
 	      if session[:user_id]
 	        @current_user = User.find(session[:user_id])
 	      end
