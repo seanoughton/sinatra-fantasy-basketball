@@ -71,16 +71,18 @@
 				<%if team.user == @user%>
 				<div class="row">	
 					<div class="col-md-2">
+					
 					<form action="/team/<%=team.id%>/edit" method="GET">
+						<!-- <input type="submit" value="Edit Team"> -->
 						<button type="submit" class="btn btn-primary btn-sm">Edit Team</button>
-					</form>
+					</form> 
 					</div> <!--end col-->
 					<br>
 					<div class="col-md-3">
+				
 					<form action="/team/<%=team.id%>/delete" method="GET">
-						<input type="hidden" name="_method" value="delete">
-						<button type="submit" class="btn btn-danger btn-sm">Delete Team</button>
-					</form>
+						<button type="submit" class="btn btn-danger btn-sm">Delete Team</button> 
+					</form> 
 					<br>
 					</div> <!--end col-->
 				</div> <!--end row-->

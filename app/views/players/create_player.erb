@@ -34,14 +34,16 @@
   </div><!-- end row -->
 </div> <!-- end container --> 
 
-<div class="container">
-  <div class="row">
-      <div class="col-md">
-        <h4 class="text-danger">All Fields must be filled out.</h4>
-      </div> <!-- end col --> 
-  </div><!-- end row -->
-</div> <!-- end container --> 
-
+ <% if flash.has?(:message) %>
+      <div class="row">
+        <div class="col-md">
+           <div class="alert alert-danger" role="alert">
+                <%= flash[:message] %>
+            </div>
+        </div>
+      </div>
+     <% end %>
+    <br>
 
 <div class="container">
   <div class="row">

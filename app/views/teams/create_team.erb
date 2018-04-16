@@ -27,6 +27,16 @@
 
 <div class="container">
 
+  <% if flash.has?(:message) %>
+    <div class="row">
+      <div class="col-md">
+         <div class="alert alert-danger" role="alert">
+              <%= flash[:message] %>
+          </div>
+      </div>
+    </div><!-- end row -->
+  <% end %>
+
   <div class="row">
       <div class="col-md">
         <h1>Create a Team</h1>
@@ -38,7 +48,7 @@
         <form action="/team/new" method="POST">
           <div class="form-group">
             <label for="exampleFormControlInput1">Team Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Charlie's Warriors" name="team[teamname]">
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Charlie's Warriors" name="team[teamname]">
           </div>
 
         <button type="submit" class="btn btn-success">Create Team</button>
@@ -47,13 +57,15 @@
 
   <br>
 
-   <div class="row">
-      <div class="col-md">
-        <h3>Choose Players</h3>
-      </div> <!-- end col --> 
-  </div><!-- end row -->
 
- <br>
+
+ <div class="row">
+    <div class="col-md">
+      <h3>Add Players</h3>
+      <h8 class="text-info">Click on a player to see their stats</h8>
+        </div> <!-- end col --> 
+  </div><!-- end row -->
+  <br>
 
   <div class="row">
     <div class="col-md"> <!-- Point Guards Col-->

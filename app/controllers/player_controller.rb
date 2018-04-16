@@ -9,6 +9,16 @@ class PlayerController < ApplicationController
 		end
 	end
 
+	get '/player/new/error' do #Show error for creating new player
+		if logged_in?#USER VALIDATION
+			@user = current_user
+			flash[:message] = "Please fill out all of the fields."
+			erb :'/players/create_player'
+		else
+			redirect '/login'
+		end
+	end
+
 	get '/player/:id/edit' do
 		if logged_in?#USER VALIDATION
 			binding.pry
@@ -33,7 +43,7 @@ class PlayerController < ApplicationController
 		#USER VALIDATIONS
 		params[:player].each do |attribute|
 			if attribute[1].empty?
-				redirect '/player/new'
+				redirect '/player/new/error'
 			end
 		end 
 		@player = Player.create(params[:player])
@@ -49,6 +59,6 @@ class PlayerController < ApplicationController
 		redirect "/player/#{@player.slug}"
 	end
 
-	#I intentionally made it not possible to delete a player from the overall roster of players.
+	#I intentionally made it NOT possible to delete a player from the overall roster of players.
 
 end

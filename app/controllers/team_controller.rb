@@ -31,6 +31,17 @@ class TeamController < ApplicationController
     	end	
 	end
 
+	get '/team/new/error' do
+		if logged_in? #USER VALIDATION
+      		@user = current_user
+      		@players = available_players
+      		flash[:message] = "Please enter a Team Name and choose at least one player."
+      		erb :'/teams/create_team'
+    	else
+      		redirect '/login'
+    	end	
+	end
+
 	get "/team/:id/edit" do
 		if team_exists? 
 			if logged_in? #USER VALIDATIONS
@@ -62,8 +73,8 @@ class TeamController < ApplicationController
 
 	post '/team/new' do #Create a Team 
 		#USER VALIDATIONS
-		if !params[:team][:teamname] || !params[:team][:player_ids]
-			redirect 'team/new'
+		if params[:team][:teamname].empty? || !params[:team][:player_ids]
+			redirect 'team/new/error'
 		else
 			team = Team.create(params[:team])
 			team.save
@@ -149,7 +160,7 @@ class TeamController < ApplicationController
 
 		def collect_existing_teams
 			Team.all.collect do |team|
-				if team.id == params[:id]
+				if team.id == params[:id].to_i
 					team
 				end
 			end.compact
