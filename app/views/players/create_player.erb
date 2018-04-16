@@ -58,7 +58,17 @@
           
           <lable>Rank:</label> <input type="text" id="content" name="player[rank]"><br></br>
           <lable>Name:</label> <input type="text" id="content" name="player[playername]"><br></br>
-          <lable>Position:</label> <input type="text" id="content" name="player[position]"><br></br>
+
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Position</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="player[position]">
+                <option>PG</option>
+                <option>SG</option>
+                <option>SF</option>
+                <option>PF</option>
+                <option>C</option>
+              </select>
+            </div>
           <lable>Age:</label> <input type="text" id="content" name="player[age]"><br></br>
           <lable>NBA Team:</label> <input type="text" id="content" name="player[originalteam]"><br></br>
           <lable>Field Goal Percentage:</label> <input type="text" id="content" name="player[fg_perc]"><br></br>
