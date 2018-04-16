@@ -1,6 +1,6 @@
 class TeamController < ApplicationController
 
-	get '/teams' do
+	get '/teams' do #Read all the teams
 		if logged_in?
 			@teams = Team.all
 			@user = current_user
@@ -10,8 +10,8 @@ class TeamController < ApplicationController
 		end	
 	end
 
-	get '/teams/:slug' do
-		if logged_in?
+	get '/teams/:slug' do #Read a Team
+		if logged_in? #USER VALIDATION
 			@user = current_user
 			if params[:slug] == @user.username
 				redirect "/team/#{@user.id}/edit"
@@ -22,7 +22,7 @@ class TeamController < ApplicationController
 	end
 
 	get '/team/new' do
-		if logged_in?
+		if logged_in? #USER VALIDATION
       		@user = current_user
       		@players = available_players
       		erb :'/teams/create_team'
@@ -32,8 +32,8 @@ class TeamController < ApplicationController
 	end
 
 	get "/team/:id/edit" do
-		if team_exists?
-			if logged_in?
+		if team_exists? 
+			if logged_in? #USER VALIDATIONS
 			@team = Team.find(params[:id])
 			@user = current_user
 			@players = available_players
@@ -48,7 +48,7 @@ class TeamController < ApplicationController
 
 	get "/team/:id/delete" do
 		if team_exists?	
-			if logged_in?
+			if logged_in? #USER VALIDATIONS
 				@team = Team.find(params[:id])
 				@user = current_user
 				erb :'/teams/delete'
@@ -60,7 +60,20 @@ class TeamController < ApplicationController
 		end
 	end
 
-	patch '/team/:id/edit' do
+	post '/team/new' do #Create a Team 
+		#USER VALIDATIONS
+		if !params[:team][:teamname] || !params[:team][:player_ids]
+			redirect 'team/new'
+		else
+			team = Team.create(params[:team])
+			team.save
+			@user = current_user
+			@user.teams << team
+			redirect '/teams'
+		end
+	end
+
+	patch '/team/:id/edit' do #Edit a Team
 		@team = Team.find(params[:id])
 		@team.teamname = params[:team][:teamname]
 		#add players to team
@@ -83,8 +96,8 @@ class TeamController < ApplicationController
 		redirect '/teams'
 	end
 
-	delete '/team/:id/delete' do
-		if logged_in?
+	delete '/team/:id/delete' do #Delete a Team
+		if logged_in? #USER VALIDATION
 			if params[:id]
 				@team = Team.find(params[:id])
 				@team.delete
@@ -98,17 +111,7 @@ class TeamController < ApplicationController
 		
 	end
 
-	post '/team/new' do
-		if !params[:team][:teamname] || !params[:team][:player_ids]
-			redirect 'team/new'
-		else
-			team = Team.create(params[:team])
-			team.save
-			@user = current_user
-			@user.teams << team
-			redirect '/teams'
-		end
-	end
+	
 
 	helpers do
 

@@ -1,7 +1,7 @@
 class PlayerController < ApplicationController
 
-	get '/player/new' do
-		if logged_in?
+	get '/player/new' do #Read all players
+		if logged_in?#USER VALIDATION
 			@user = current_user
 			erb :'/players/create_player'
 		else
@@ -10,7 +10,7 @@ class PlayerController < ApplicationController
 	end
 
 	get '/player/:id/edit' do
-		if logged_in?
+		if logged_in?#USER VALIDATION
 			binding.pry
 			@player = Player.find(params[:id])
 			@user = current_user
@@ -23,13 +23,14 @@ class PlayerController < ApplicationController
 
 
 
-	get '/player/:slug' do
+	get '/player/:slug' do #Read a player
 		@player = Player.find_by_slug(params[:slug])
 		@user = current_user
 		erb :'players/player_show'
 	end
 
-	post '/player/new' do
+	post '/player/new' do #Create a Player
+		#USER VALIDATIONS
 		params[:player].each do |attribute|
 			if attribute[1].empty?
 				redirect '/player/new'
@@ -41,11 +42,13 @@ class PlayerController < ApplicationController
 		
 	end
 
-	patch '/player/:id/edit' do
+	patch '/player/:id/edit' do #Edit a Player
 		@player = Player.find(params[:id])
 		@player.update(params[:player])
 		@player.save
 		redirect "/player/#{@player.slug}"
 	end
+
+	#I intentionally made it not possible to delete a player from the overall roster of players.
 
 end

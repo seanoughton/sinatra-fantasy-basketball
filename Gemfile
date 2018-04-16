@@ -12,3 +12,4 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem "valid_email2"
+gem 'rack-flash3'

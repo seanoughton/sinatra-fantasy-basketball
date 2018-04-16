@@ -1,5 +1,6 @@
 require './config/environment'
 require 'csv'
+require 'rack-flash'
 class ApplicationController < Sinatra::Base
 
   	configure do
@@ -7,13 +8,14 @@ class ApplicationController < Sinatra::Base
 	    set :views, 'app/views'
 	    enable :sessions
 	    set :session_secret, "password_security"
+	    use Rack::Flash
   	end
 
   	get '/' do
   		erb :index
   	end
 
-  	helpers do
+  	helpers do #USER VALIDATIONS
 	    def logged_in? #returns true if logged in
 	      !!session[:user_id]
 	    end

@@ -1,10 +1,17 @@
 class UserController < ApplicationController
 
+
 	get '/login' do
+		flash[:message] = "Please enter a user name and password or signup."
 		erb :'users/login'
 	end
 
 	get '/signup' do
+		erb :'users/create_user'
+	end
+
+	get '/signup/problem' do
+		flash[:message] = "Please fill out all of the fields."
 		erb :'users/create_user'
 	end
 
@@ -17,12 +24,16 @@ class UserController < ApplicationController
     	end
 	end
 
-	post '/signup' do
+	post '/signup' do #Create a User
+
+		#USER VALIDATIONS
 		address = ValidEmail2::Address.new(params[:user][:email])
+
 		#test to make sure that the email is in the proper format
 		if params[:user][:username].empty? || params[:user][:email].empty? || params[:user][:password].empty? || !address.valid?
 			#tell the user someway that they need to enter in a password
-      		redirect to '/signup'
+			flash[:message] = "Please fill out all of the fields."
+      		redirect to '/signup/problem'
     	else
 			@user = User.create(params[:user])
 			@user.save
@@ -32,13 +43,15 @@ class UserController < ApplicationController
 		
 	end
 
-	post '/login' do
+	post '/login' do #Login Authentication
+		#USER VALIDATIONS
+
 	  	@user = User.find_by(username: params[:username])
 	    if @user && @user.authenticate(params[:password])
 	      session[:user_id] = @user.id
 	      redirect to '/teams'
 	    else
-	      redirect to '/signup'
+	      redirect to '/login'
 	    end
 	end
 
