@@ -37,13 +37,23 @@
 <div class="container">
   <div class="row">
       <div class="col-md">
-        <form action="/player/new" method="POST">
-          <button type="submit" class="btn btn-success">Create Player</button>
+        <h4 class="text-danger">All Fields must be filled out.</h4>
+      </div> <!-- end col --> 
+  </div><!-- end row -->
+</div> <!-- end container --> 
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-md">
+       
           <br></br>
       </div> <!-- end col --> 
   </div><!-- end row -->
   <div class="row">
       <div class="col-md">
+         <form action="/player/new" method="POST">
+          
           <lable>Rank:</label> <input type="text" id="content" name="player[rank]"><br></br>
           <lable>Name:</label> <input type="text" id="content" name="player[playername]"><br></br>
           <lable>Position:</label> <input type="text" id="content" name="player[position]"><br></br>
@@ -62,7 +72,7 @@
           <lable>Points Per Game:</label> <input type="text" id="content" name="player[ps_per_game]">
             <br></br>
             <br>
-          
+          <button type="submit" class="btn btn-success">Create Player</button>
           
         </form>
         

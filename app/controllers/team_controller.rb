@@ -32,23 +32,31 @@ class TeamController < ApplicationController
 	end
 
 	get "/team/:id/edit" do
-		if logged_in?
+		if team_exists?
+			if logged_in?
 			@team = Team.find(params[:id])
 			@user = current_user
 			@players = available_players
 			erb :'/teams/edit'
+			else
+				redirect '/login'
+			end
 		else
-			redirect '/login'
+			redirect '/teams'
 		end
 	end
 
 	get "/team/:id/delete" do
-		if logged_in?
-			@team = Team.find(params[:id])
-			@user = current_user
-			erb :'/teams/delete'
+		if team_exists?	
+			if logged_in?
+				@team = Team.find(params[:id])
+				@user = current_user
+				erb :'/teams/delete'
+			else
+				redirect '/login'
+			end
 		else
-			redirect '/login'
+			redirect '/teams'
 		end
 	end
 
@@ -127,13 +135,25 @@ class TeamController < ApplicationController
   			end
   			@available_players
 =end
-			#binding.pry
+			
   			Player.all.collect do |player|
   				if !taken_players.flatten.include?(player)
   					player
   				end
   			end.compact
 
+		end
+
+		def collect_existing_teams
+			Team.all.collect do |team|
+				if team.id == params[:id]
+					team
+				end
+			end.compact
+		end
+
+		def team_exists?
+			!collect_existing_teams.empty?
 		end
 	end
 

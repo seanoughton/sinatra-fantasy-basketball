@@ -11,6 +11,7 @@ class PlayerController < ApplicationController
 
 	get '/player/:id/edit' do
 		if logged_in?
+			binding.pry
 			@player = Player.find(params[:id])
 			@user = current_user
 			erb :'players/edit'
@@ -29,9 +30,15 @@ class PlayerController < ApplicationController
 	end
 
 	post '/player/new' do
+		params[:player].each do |attribute|
+			if attribute[1].empty?
+				redirect '/player/new'
+			end
+		end 
 		@player = Player.create(params[:player])
 		@player.save
 		redirect "/player/#{@player.slug}"
+		
 	end
 
 	patch '/player/:id/edit' do
