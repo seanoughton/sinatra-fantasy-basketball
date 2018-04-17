@@ -39,6 +39,16 @@ class PlayerController < ApplicationController
 		erb :'players/player_show'
 	end
 
+	get '/players' do
+		if logged_in?#USER VALIDATION
+			@players = Player.all
+			@user = current_user
+			erb :'players/players'
+		else
+			redirect '/login'
+		end
+	end
+
 	post '/player/new' do #Create a Player
 		#USER VALIDATIONS
 		params[:player].each do |attribute|

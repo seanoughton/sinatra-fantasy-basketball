@@ -14,6 +14,9 @@
         <a class="nav-link" href="#">Create a Team</a><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/players">Players</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="/player/new">Create a Player</a>
       <li class="nav-item">
         <a class="nav-link" href="/logout">Log Out</a>
@@ -131,62 +134,6 @@
 <!-- Centers Col-->
  </form>
  <br></br>
- <!--
 
-  <div class="row">
-    <div class="col-md"> 
-      <h6>Point Guards</h6>
-        <%@players.each do |player|%>
-          <%if player.position == "PG" %>
-            <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"><h8><%=player.playername%></h8></a></input>
-            <br></br>
-          <%end%>
-        <%end%>         
-      </div> 
-
-      <div class="col-md"> 
-      <h6>Shooting Guards</h6>
-        <%@players.each do |player|%>
-          <%if player.position == "SG" %>
-            <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"> <h8><%=player.playername%></h8></a></input>
-            <br></br>
-          <%end%>
-        <%end%>         
-      </div> 
-
-
-      <div class="col-md"> >
-      <h6>Small Forwards</h6>
-        <%@players.each do |player|%>
-          <%if player.position == "SF" %>
-            <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"><h8><%=player.playername%></h8></a></input>
-            <br></br>
-          <%end%>
-        <%end%>         
-      </div> 
-
-    <div class="col-md"> 
-      <h6>Power Forwards</h6>
-        <%@players.each do |player|%>
-          <%if player.position == "PF" %>
-            <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"> <h8><%=player.playername%></h8></a></input>
-            <br></br>
-          <%end%>
-        <%end%>         
-      </div> 
-
-      <div class="col-md"> 
-      <h6>Centers</h6>
-        <%@players.each do |player|%>
-          <%if player.position == "C" %>
-            <input type="checkbox" name="team[player_ids][]" id="<%=player.playername %>" value="<%=player.id%>"><a href="/player/<%=player.slug%>" target="blank"><h8><%=player.playername%></h8></a></input>
-            <br></br>
-          <%end%>
-        <%end%>         
-      </div> 
-
-  </div>
-
- 
 
 
