@@ -61,13 +61,80 @@
  <div class="row">
     <div class="col-md">
       <h3>Add Players</h3>
-      <h8 class="text-info">Click on a player to see their stats</h8>
         </div> <!-- end col --> 
   </div><!-- end row -->
   <br>
 
+<!-- Point Guards Col-->
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Point Guards</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="team[player_ids][]"> 
+      <%@players.each do |player|%>
+        <%if player.position == "PG" %>
+          <option value="<%=player.id%>"><%=player.playername%></option>
+        <%end%>
+      <%end%>
+    </select>
+  </div>
+<!-- Point Guards Col-->
+
+<!-- Shooting Guards Col-->
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Shooting Guards</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="team[player_ids][]"> 
+      <%@players.each do |player|%>
+        <%if player.position == "SG" %>
+          <option value="<%=player.id%>"><%=player.playername%></option>
+        <%end%>
+      <%end%>
+    </select>
+  </div>
+<!-- Shooting Guards Col-->
+
+<!-- Small Forwards Col-->
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Small Forwards</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="team[player_ids][]"> 
+      <%@players.each do |player|%>
+        <%if player.position == "SF" %>
+          <option value="<%=player.id%>"><%=player.playername%></option>
+        <%end%>
+      <%end%>
+    </select>
+  </div>
+<!-- Small Forwards Col-->
+
+<!-- Power Forwards Col-->
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Power Forwards</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="team[player_ids][]"> 
+      <%@players.each do |player|%>
+        <%if player.position == "PF" %>
+          <option value="<%=player.id%>"><%=player.playername%></option>
+        <%end%>
+      <%end%>
+    </select>
+  </div>
+<!-- Power Forwards Col-->
+
+<!-- Centers Col-->
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Centers</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="team[player_ids][]"> 
+      <%@players.each do |player|%>
+        <%if player.position == "C" %>
+          <option value="<%=player.id%>"><%=player.playername%></option>
+        <%end%>
+      <%end%>
+    </select>
+  </div>
+<!-- Centers Col-->
+ </form>
+ <br></br>
+ <!--
+
   <div class="row">
-    <div class="col-md"> <!-- Point Guards Col-->
+    <div class="col-md"> 
       <h6>Point Guards</h6>
         <%@players.each do |player|%>
           <%if player.position == "PG" %>
@@ -75,9 +142,9 @@
             <br></br>
           <%end%>
         <%end%>         
-      </div> <!-- end col --> 
+      </div> 
 
-      <div class="col-md"> <!-- Shooting Guards Col-->
+      <div class="col-md"> 
       <h6>Shooting Guards</h6>
         <%@players.each do |player|%>
           <%if player.position == "SG" %>
@@ -85,10 +152,10 @@
             <br></br>
           <%end%>
         <%end%>         
-      </div> <!-- end col --> 
+      </div> 
 
 
-      <div class="col-md"> <!-- Small Forwards Col-->
+      <div class="col-md"> >
       <h6>Small Forwards</h6>
         <%@players.each do |player|%>
           <%if player.position == "SF" %>
@@ -96,9 +163,9 @@
             <br></br>
           <%end%>
         <%end%>         
-      </div> <!-- end col --> 
+      </div> 
 
-    <div class="col-md"> <!-- Power Forwards Col-->
+    <div class="col-md"> 
       <h6>Power Forwards</h6>
         <%@players.each do |player|%>
           <%if player.position == "PF" %>
@@ -106,9 +173,9 @@
             <br></br>
           <%end%>
         <%end%>         
-      </div> <!-- end col --> 
+      </div> 
 
-      <div class="col-md"> <!-- Centers Col-->
+      <div class="col-md"> 
       <h6>Centers</h6>
         <%@players.each do |player|%>
           <%if player.position == "C" %>
@@ -116,10 +183,10 @@
             <br></br>
           <%end%>
         <%end%>         
-      </div> <!-- end col --> 
+      </div> 
 
-  </div><!-- end row -->
+  </div>
 
-  </form>
+ 
 
 
