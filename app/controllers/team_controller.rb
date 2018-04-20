@@ -101,7 +101,9 @@ class TeamController < ApplicationController
 		if params[:add_player]
 			players_to_add = params[:add_player][:player_ids]
 			players_to_add.each do |player_id|
-			@team.players << Player.find(player_id)
+				if player_id != ""
+					@team.players << Player.find(player_id)
+				end
 			end
 		end
 		

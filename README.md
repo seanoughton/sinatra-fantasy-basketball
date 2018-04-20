@@ -6,7 +6,7 @@ This is a Fantasy Basketball Sinatra app. Mulitple users can create Fantasy NBA 
 
 ## Installation
 
-Fork and clonet this repository. Navigate to the root folder. Use bundle install to install all of the necessary gems. There is a database of players already. However, if you want to find or create your own CSV list of players, you can do that. Place the csv file in the db/csv folder. Update the name of the csv file in the Rake Task seed_db. Then run rake seed_db in the console to seed the database with your players.
+Fork and clone this repository. Navigate to the root folder. Use bundle install to install all of the necessary gems. There is a database of players already. However, if you want to find or create your own CSV list of players, you can do that. Place the csv file in the db/csv folder. Update the name of the csv file in the Rake Task seed_db. Then run rake seed_db in the console to seed the database with your players.
 
 
 ## Usage
