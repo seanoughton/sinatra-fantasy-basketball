@@ -29,120 +29,122 @@
 <!-- Nav Bar -->
 <br></br>
 
-<div class="container">
-	<div class="row">
-		<div class="col-md">
-			<h1> Edit your Team:</h1>
-		</div>
-	</div><!-- end row -->
-</div> <!-- end container -->	
+<div class = "container" id="not-sign-in">
 
-<div class="container">
-	<div class="row">
-		<div class="col-md">
-				<form action="/team/<%=@team.id%>/edit" method="POST">
-					<button type="submit" class="btn btn-success">Edit Team</button>
-					<br></br>
-				  <input type="hidden" name="_method" value="PATCH">
-				  <h3>Team Name</h3>
-				  <input type="text" name="team[teamname]" id="team_name" value="<%=@team.teamname%>">
-				  <br></br>
-	    </div> <!-- end col --> 
-	</div><!-- end row -->
+  <div class="container">
+  	<div class="row">
+  		<div class="col-md">
+  			<h1> Edit your Team:</h1>
+  		</div>
+  	</div><!-- end row -->
+  </div> <!-- end container -->	
 
-
-
-	<div class="row">
-		<div class="col-md">
-				  <h3>Remove Players</h3>
-	     </div> <!-- end col --> 
-	</div><!-- end row -->
-
-	<div class="row">
-		<div class="col-md">
-				  <%@team.players.all.each do |player| %>
-				    <label><a href="/player/<%=player.slug%>" target="blank"><%=player.playername%>: <%=player.position%></a></label>
-				    <input type="checkbox" id="remove_<%=player.id%>" name="remove_player[player_ids][]" value="<%= player.id %>"><br>
-				  <% end %>
-        </div> <!-- end col --> 
-	</div><!-- end row -->
-	<br></br>
+  <div class="container">
+  	<div class="row">
+  		<div class="col-md">
+  				<form action="/team/<%=@team.id%>/edit" method="POST">
+  					<button type="submit" class="btn btn-success">Edit Team</button>
+  					<br></br>
+  				  <input type="hidden" name="_method" value="PATCH">
+  				  <h3>Team Name</h3>
+  				  <input type="text" name="team[teamname]" id="team_name" value="<%=@team.teamname%>">
+  				  <br></br>
+  	    </div> <!-- end col --> 
+  	</div><!-- end row -->
 
 
-  <div class="row">
-    <div class="col-md">
-      <h3>Add Players</h3>
-        </div> <!-- end col --> 
-  </div><!-- end row -->
-  <br>
 
-<!-- Point Guards Col-->
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Point Guards</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="team[player_ids][]"> 
-      <%@players.each do |player|%>
-        <%if player.position == "PG" %>
-          <option value="<%=player.id%>"><%=player.playername%></option>
+  	<div class="row">
+  		<div class="col-md">
+  				  <h3>Remove Players</h3>
+  	     </div> <!-- end col --> 
+  	</div><!-- end row -->
+
+  	<div class="row">
+  		<div class="col-md">
+  				  <%@team.players.all.each do |player| %>
+  				    <label><a href="/player/<%=player.slug%>" target="blank"><%=player.playername%>: <%=player.position%></a></label>
+  				    <input type="checkbox" id="remove_<%=player.id%>" name="remove_player[player_ids][]" value="<%= player.id %>"><br>
+  				  <% end %>
+          </div> <!-- end col --> 
+  	</div><!-- end row -->
+  	<br></br>
+
+
+    <div class="row">
+      <div class="col-md">
+        <h3>Add Players</h3>
+          </div> <!-- end col --> 
+    </div><!-- end row -->
+    <br>
+
+  <!-- Point Guards Col-->
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Point Guards</label>
+      <select class="form-control" id="exampleFormControlSelect1" name="team[player_ids][]"> 
+        <%@players.each do |player|%>
+          <%if player.position == "PG" %>
+            <option value="<%=player.id%>"><%=player.playername%></option>
+          <%end%>
         <%end%>
-      <%end%>
-    </select>
-  </div>
-<!-- Point Guards Col-->
+      </select>
+    </div>
+  <!-- Point Guards Col-->
 
-<!-- Shooting Guards Col-->
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Shooting Guards</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="add_player[player_ids][]"> 
-      <%@players.each do |player|%>
-        <%if player.position == "SG" %>
-          <option value="<%=player.id%>"><%=player.playername%></option>
+  <!-- Shooting Guards Col-->
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Shooting Guards</label>
+      <select class="form-control" id="exampleFormControlSelect1" name="add_player[player_ids][]"> 
+        <%@players.each do |player|%>
+          <%if player.position == "SG" %>
+            <option value="<%=player.id%>"><%=player.playername%></option>
+          <%end%>
         <%end%>
-      <%end%>
-    </select>
-  </div>
-<!-- Shooting Guards Col-->
+      </select>
+    </div>
+  <!-- Shooting Guards Col-->
 
-<!-- Small Forwards Col-->
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Small Forwards</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="add_player[player_ids][]"> 
-      <%@players.each do |player|%>
-        <%if player.position == "SF" %>
-          <option value="<%=player.id%>"><%=player.playername%></option>
+  <!-- Small Forwards Col-->
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Small Forwards</label>
+      <select class="form-control" id="exampleFormControlSelect1" name="add_player[player_ids][]"> 
+        <%@players.each do |player|%>
+          <%if player.position == "SF" %>
+            <option value="<%=player.id%>"><%=player.playername%></option>
+          <%end%>
         <%end%>
-      <%end%>
-    </select>
-  </div>
-<!-- Small Forwards Col-->
+      </select>
+    </div>
+  <!-- Small Forwards Col-->
 
-<!-- Power Forwards Col-->
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Power Forwards</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="add_player[player_ids][]"> 
-      <%@players.each do |player|%>
-        <%if player.position == "PF" %>
-          <option value="<%=player.id%>"><%=player.playername%></option>
+  <!-- Power Forwards Col-->
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Power Forwards</label>
+      <select class="form-control" id="exampleFormControlSelect1" name="add_player[player_ids][]"> 
+        <%@players.each do |player|%>
+          <%if player.position == "PF" %>
+            <option value="<%=player.id%>"><%=player.playername%></option>
+          <%end%>
         <%end%>
-      <%end%>
-    </select>
-  </div>
-<!-- Power Forwards Col-->
+      </select>
+    </div>
+  <!-- Power Forwards Col-->
 
-<!-- Centers Col-->
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Centers</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="add_player[player_ids][]"> 
-      <%@players.each do |player|%>
-        <%if player.position == "C" %>
-          <option value="<%=player.id%>"><%=player.playername%></option>
+  <!-- Centers Col-->
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Centers</label>
+      <select class="form-control" id="exampleFormControlSelect1" name="add_player[player_ids][]"> 
+        <%@players.each do |player|%>
+          <%if player.position == "C" %>
+            <option value="<%=player.id%>"><%=player.playername%></option>
+          <%end%>
         <%end%>
-      <%end%>
-    </select>
-  </div>
-<!-- Centers Col-->
- </form>
- <br></br>
-
+      </select>
+    </div>
+  <!-- Centers Col-->
+   </form>
+   <br></br>
+</div> <!-- end container not-index -->
 
 
 

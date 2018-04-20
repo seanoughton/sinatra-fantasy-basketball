@@ -30,54 +30,61 @@
 
 <br></br>
 
+<div class = "container" id="not-sign-in">
 
+  <div class="container">
+  	<div class="row">
+  		<div class="col-md-1">
+    		</div><!-- end col --> 
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-1">
-  		</div><!-- end col --> 
+        	<div class="col-md-10">
+          <h3>Are you sure you want to delete this team?</h3>
+        	</div> <!-- end col --> 
 
-      	<div class="col-md-10">
-        <h3>Are you sure you want to delete this team?</h3>
-      	</div> <!-- end col --> 
+        	<div class="col-md-1">
+    		</div><!-- end col --> 
 
-      	<div class="col-md-1">
-  		</div><!-- end col --> 
-
-  </div><!-- end row -->
-<br>
-  <div class="row">
-  	<div class="col-md-4">
-  	</div><!-- end col --> 
-
-	  <div class="col-md-4">
-	    <form action="/team/<%=@team.id%>/delete" method="POST">
-			<input type="hidden" name="_method" value="delete">
-			<button type="submit" class="btn btn-danger">Delete Team</button>
-		</form>
-	  </div> <!-- end col --> 
-
-	  <div class="col-md-4">
-  	</div><!-- end col --> 
-  </div><!-- end row -->
-
+    </div><!-- end row -->
   <br>
-  <div class="row">
-    <div class="col-md-4">
-    </div><!-- end col --> 
+    <div class="row">
+    	<div class="col-md-4">
+    	</div><!-- end col --> 
 
-    <div class="col-md-4">
-      <form action="/teams" method="GET">
-      <button type="submit" class="btn btn-success">See all Teams</button>
-    </form>
-    </div> <!-- end col --> 
+  	  <div class="col-md-4">
+  	    <form action="/team/<%=@team.id%>/delete" method="POST">
+  			<input type="hidden" name="_method" value="delete">
+  			<button type="submit" class="btn btn-danger">Delete Team</button>
+  		</form>
+  	  </div> <!-- end col --> 
 
-    <div class="col-md-4">
-    </div><!-- end col --> 
-  </div><!-- end row -->
+  	  <div class="col-md-4">
+    	</div><!-- end col --> 
+    </div><!-- end row -->
 
-</div><!-- end container -->
+    <br>
+    <div class="row">
+      <div class="col-md-4">
+      </div><!-- end col --> 
+
+      <div class="col-md-4">
+        <form action="/teams" method="GET">
+        <button type="submit" class="btn btn-success">See all Teams</button>
+      </form>
+      </div> <!-- end col --> 
 
 
+      <div class="col-md-4">
+      </div><!-- end col --> 
+    </div><!-- end row -->
+     <div class="row">
+      <div class="col-md-4">
+        <br>
+      </div><!-- end col --> 
+    </div><!-- end row -->
+
+
+  </div><!-- end container -->
+
+</div> <!-- end container teams-page -->
 
 

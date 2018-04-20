@@ -29,73 +29,75 @@
 
 <br></br>
 
-<div class="container">
+<div class = "container" id="not-sign-in">
+
+	<div class="container">
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8"><h3 class="text-secondary">Here is a list of all of your teams.</h3></div>
+				<div class="col-sm-2"></div>
+			</div>
+	</div>
+
+	<br></br>
+
+	<!-- If there are no teams -->
+	<div class="container">
 		<div class="row">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-8"><h3 class="text-secondary">Here is a list of all of your teams.</h3></div>
-			<div class="col-sm-2"></div>
-		</div>
-</div>
+				<div class="col-sm-12">
+					<%if @user.teams.all.empty?%>
+					<h4> There are currently no teams.  Why don't you create a Team! </h4>
+					<%end%>
+				</div> <!-- end col -->	
+		</div><!-- end row -->
+	</div> <!-- end container -->	
 
-<br></br>
 
-<!-- If there are no teams -->
-<div class="container">
-	<div class="row">
-			<div class="col-sm-12">
-				<%if @user.teams.all.empty?%>
-				<h4> There are currently no teams.  Why don't you create a Team! </h4>
-				<%end%>
+	<div class="container">
+		<div class="row">	
+			<div class="col-lg">
+
+					<%@user.teams.each do |team|%>
+						<h4 class="text-success"><strong>Team Name:</strong> <%=team.teamname%>
+						<h3 class="text-secondary">Players</h3>
+						
+							<ul>
+								<%team.players.each do |player|%>
+									<li><strong><a href="/player/<%=player.slug%>"><%=player.playername%>: </strong></a>
+										<%=player.position%></strong>
+									</li>
+								<%end%>
+							</ul>
+
+							<%if team.user == @user%>
+					<div class="row">	
+						<div class="col-md-2">
+						
+						<form action="/team/<%=team.id%>/edit" method="GET">
+							<!-- <input type="submit" value="Edit Team"> -->
+							<button type="submit" class="btn btn-primary btn-sm">Edit Team</button>
+						</form> 
+						</div> <!--end col-->
+						<br>
+						<div class="col-md-3">
+					
+						<form action="/team/<%=team.id%>/delete" method="GET">
+							<button type="submit" class="btn btn-danger btn-sm">Delete Team</button> 
+						</form> 
+						<br>
+						</div> <!--end col-->
+					</div> <!--end row-->
+					<%end%>
+					<button type="button" class="btn btn-secondary btn-sm btn-block" disabled></button>
+					<br></br>
+					<%end%>
+
+
+
 			</div> <!-- end col -->	
-	</div><!-- end row -->
-</div> <!-- end container -->	
-
-
-<div class="container">
-	<div class="row">	
-		<div class="col-lg">
-
-				<%@user.teams.each do |team|%>
-					<h4 class="text-success"><strong>Team Name:</strong> <%=team.teamname%>
-					<h3 class="text-secondary">Players</h3>
-					
-						<ul>
-							<%team.players.each do |player|%>
-								<li><strong><a href="/player/<%=player.slug%>"><%=player.playername%>: </strong></a>
-									<%=player.position%></strong>
-								</li>
-							<%end%>
-						</ul>
-
-						<%if team.user == @user%>
-				<div class="row">	
-					<div class="col-md-2">
-					
-					<form action="/team/<%=team.id%>/edit" method="GET">
-						<!-- <input type="submit" value="Edit Team"> -->
-						<button type="submit" class="btn btn-primary btn-sm">Edit Team</button>
-					</form> 
-					</div> <!--end col-->
-					<br>
-					<div class="col-md-3">
-				
-					<form action="/team/<%=team.id%>/delete" method="GET">
-						<button type="submit" class="btn btn-danger btn-sm">Delete Team</button> 
-					</form> 
-					<br>
-					</div> <!--end col-->
-				</div> <!--end row-->
-				<%end%>
-				<button type="button" class="btn btn-secondary btn-sm btn-block" disabled></button>
-				<br></br>
-				<%end%>
-
-
-
-		</div> <!-- end col -->	
-	</div> <!-- end row -->
-</div>	<!-- end container -->	
-
+		</div> <!-- end row -->
+	</div>	<!-- end container -->	
+</div> <!-- end container not-sign-in -->
 
 
 

@@ -83,7 +83,7 @@ class TeamController < ApplicationController
 
 	post '/team/new' do #Create a Team 
 		#USER VALIDATIONS
-		if params[:team][:teamname].empty? || !params[:team][:player_ids]
+		if params[:team][:teamname].empty? || !params[:team][:player_ids] || params[:team][:player_ids].include?("")
 			redirect 'team/new/error'
 		else
 			team = Team.create(params[:team])

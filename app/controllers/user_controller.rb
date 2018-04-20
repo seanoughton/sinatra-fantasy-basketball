@@ -20,6 +20,11 @@ class UserController < ApplicationController
 		erb :'users/create_user'
 	end
 
+	get '/signup/emailproblem' do
+		flash[:message] = "Please enter a correct email address."
+		erb :'users/create_user'
+	end
+
 	get '/logout' do
 		if logged_in?
       		session.clear
@@ -33,11 +38,12 @@ class UserController < ApplicationController
 
 		#USER VALIDATIONS
 		address = ValidEmail2::Address.new(params[:user][:email])
-	
 		#test to make sure that the email is in the proper format
-		if params[:user][:username].empty? || params[:user][:email].empty? || params[:user][:password].empty? || !address.valid?
+		if params[:user][:username].empty? || params[:user][:email].empty? || params[:user][:password].empty? 
 			flash[:message] = "Please fill out all of the fields."
       		redirect to '/signup/problem'
+      	elsif !address.valid?
+      		redirect to '/signup/emailproblem'
       	elsif username_exists?
       		redirect to '/signup/usernameproblem'
     	else

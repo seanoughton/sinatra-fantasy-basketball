@@ -1,0 +1,33 @@
+body,h1 {
+    font-family: "sans-serif"
+}
+
+body, html {
+    height: 100%
+}
+
+body {
+    background-color: white;
+    background: url('/images/background-01.jpg');
+    background-size: cover;
+}
+
+#not-sign-in { 
+    background-color: rgba(255, 255, 255, 0.93);
+    background-size: cover;
+}
+
+#index-box { 
+    background-color: rgba(239, 253, 253, 0.7);
+    background-size: cover;
+}
+
+.login-text {
+	color: rba(20, 36, 70)	;
+}
+
+.signin-text {
+    color: white  ;
+}
+
+

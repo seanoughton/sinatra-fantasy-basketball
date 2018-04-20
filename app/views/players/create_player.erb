@@ -29,73 +29,75 @@
 <!-- Nav Bar -->
 <br></br>
 
-<div class="container">
-  <div class="row">
-      <div class="col-md">
-        <h1> Create a Player</h1>
-      </div> <!-- end col --> 
-  </div><!-- end row -->
-</div> <!-- end container --> 
+<div class = "container" id="not-sign-in">
 
- <% if flash.has?(:message) %>
-      <div class="row">
+  <div class="container">
+    <div class="row">
         <div class="col-md">
-           <div class="alert alert-danger" role="alert">
-                <%= flash[:message] %>
-            </div>
+          <h1> Create a Player</h1>
+        </div> <!-- end col --> 
+    </div><!-- end row -->
+  </div> <!-- end container --> 
+
+   <% if flash.has?(:message) %>
+        <div class="row">
+          <div class="col-md">
+             <div class="alert alert-danger" role="alert">
+                  <%= flash[:message] %>
+              </div>
+          </div>
         </div>
-      </div>
-     <% end %>
-    <br>
+       <% end %>
+      <br>
 
-<div class="container">
-  <div class="row">
-      <div class="col-md">
-       
-          <br></br>
-      </div> <!-- end col --> 
-  </div><!-- end row -->
-  <div class="row">
-      <div class="col-md">
-         <form action="/player/new" method="POST">
-          
-          <lable>Rank:</label> <input type="text" id="content" name="player[rank]"><br></br>
-          <lable>Name:</label> <input type="text" id="content" name="player[playername]"><br></br>
-
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Position</label>
-              <select class="form-control" id="exampleFormControlSelect1" name="player[position]">
-                <option>PG</option>
-                <option>SG</option>
-                <option>SF</option>
-                <option>PF</option>
-                <option>C</option>
-              </select>
-            </div>
-            
-          <lable>Age:</label> <input type="text" id="content" name="player[age]"><br></br>
-          <lable>NBA Team:</label> <input type="text" id="content" name="player[originalteam]"><br></br>
-          <lable>Field Goal Percentage:</label> <input type="text" id="content" name="player[fg_perc]"><br></br>
-          <lable>Three Point Percentage:</label> <input type="text" id="content" name="player[three_pt_perc]"><br></br>
-          <lable>Two Point Percentage:</label> <input type="text" id="content" name="player[two_pt_perc]"><br></br>
-          <lable>Free Throw Percentage:</label> <input type="text" id="content" name="player[free_throw_perc]"><br></br>
-          <lable>Offensive Rebounds:</label> <input type="text" id="content" name="player[oreb]"><br></br>
-          <lable>Rebounds:</label> <input type="text" id="content" name="player[reb]"><br></br>
-          <lable>Assists:</label> <input type="text" id="content" name="player[assists]"><br></br>
-          <lable>Steals:</label> <input type="text" id="content" name="player[steals]"><br></br>
-          <lable>Blocks:</label> <input type="text" id="content" name="player[blocks]"><br></br>
-          <lable>Turnovers:</label> <input type="text" id="content" name="player[turnovers]"><br></br>
-          <lable>Points Per Game:</label> <input type="text" id="content" name="player[ps_per_game]">
+  <div class="container">
+    <div class="row">
+        <div class="col-md">
+         
             <br></br>
-            <br>
-          <button type="submit" class="btn btn-success">Create Player</button>
-          
-        </form>
-        
-      </div> <!-- end col --> 
-  </div><!-- end row -->
-</div> <!-- end container --> 
+        </div> <!-- end col --> 
+    </div><!-- end row -->
+    <div class="row">
+        <div class="col-md">
+           <form action="/player/new" method="POST">
+            
+            <lable>Rank:</label> <input type="text" id="content" name="player[rank]"><br></br>
+            <lable>Name:</label> <input type="text" id="content" name="player[playername]"><br></br>
 
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Position</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="player[position]">
+                  <option>PG</option>
+                  <option>SG</option>
+                  <option>SF</option>
+                  <option>PF</option>
+                  <option>C</option>
+                </select>
+              </div>
+              
+            <lable>Age:</label> <input type="text" id="content" name="player[age]"><br></br>
+            <lable>NBA Team:</label> <input type="text" id="content" name="player[originalteam]"><br></br>
+            <lable>Field Goal Percentage:</label> <input type="text" id="content" name="player[fg_perc]"><br></br>
+            <lable>Three Point Percentage:</label> <input type="text" id="content" name="player[three_pt_perc]"><br></br>
+            <lable>Two Point Percentage:</label> <input type="text" id="content" name="player[two_pt_perc]"><br></br>
+            <lable>Free Throw Percentage:</label> <input type="text" id="content" name="player[free_throw_perc]"><br></br>
+            <lable>Offensive Rebounds:</label> <input type="text" id="content" name="player[oreb]"><br></br>
+            <lable>Rebounds:</label> <input type="text" id="content" name="player[reb]"><br></br>
+            <lable>Assists:</label> <input type="text" id="content" name="player[assists]"><br></br>
+            <lable>Steals:</label> <input type="text" id="content" name="player[steals]"><br></br>
+            <lable>Blocks:</label> <input type="text" id="content" name="player[blocks]"><br></br>
+            <lable>Turnovers:</label> <input type="text" id="content" name="player[turnovers]"><br></br>
+            <lable>Points Per Game:</label> <input type="text" id="content" name="player[ps_per_game]">
+              <br></br>
+              <br>
+            <button type="submit" class="btn btn-success">Create Player</button>
+            
+          </form>
+          
+        </div> <!-- end col --> 
+    </div><!-- end row -->
+  </div> <!-- end container --> 
+</div> <!-- end container not-sign-in -->
 
 
 
