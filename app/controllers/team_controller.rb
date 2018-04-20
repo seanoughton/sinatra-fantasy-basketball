@@ -35,7 +35,7 @@ class TeamController < ApplicationController
 		if logged_in? #USER VALIDATION
       		@user = current_user
       		@players = available_players
-      		flash[:message] = "Please enter a Team Name and choose at least one player."
+      		flash[:message] = "Please enter a Team Name and choose at 5 players."
       		erb :'/teams/create_team'
     	else
       		redirect '/login'
